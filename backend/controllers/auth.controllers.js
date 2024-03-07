@@ -1,6 +1,8 @@
 import bcrypt from "bcryptjs";//package used to hash the password so that password are safe 
 import User from "../models/user.model.js";
 
+import genarateTokenAndSetCookies from "../utils/genarateTokens.js";
+
 export const signup = async (req,res) =>{
     try{
      const {fullName,username,password,confirmpassword,gender}= req.body;//getting the required data from the inputs for signup
@@ -42,6 +44,8 @@ export const signup = async (req,res) =>{
 
       //newUser.save will save the data into database
        if(newUser){
+        //genarate JWT token here
+        genarateTokenAndSetCookies(newUser._id, res);
         await newUser.save();
 
         res.status(201).json({
