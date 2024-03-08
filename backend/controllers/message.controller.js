@@ -26,6 +26,8 @@ export const sendMessage = async (req , res)=>{
     if(newMessage){
         conversation.messages.push(newMessage._id)
     }
+     //soket.io
+
      //this will run one after other
     // await conversation.save();
     // await newMessage.save();
@@ -42,3 +44,26 @@ export const sendMessage = async (req , res)=>{
 
    }
 };
+
+
+export const getMessage = async(req ,res)=>{
+    try{
+     const {id:userToChatId}=req.params;
+     const senderId = req.user_.id;
+
+     const conversation = await Conversation.findOne({
+        participants:{$all:[senderId,userToChatId]},
+     }).populate("message");//used to get the message in array not reffrence but acutal message
+
+    if(!conversation) return res.status(200).json([]);
+
+    const messages = conversation.messages;
+
+     res.status(200).json(messages);
+    }
+    catch(error){
+        console.log("error is in getMessage controller :",error.message)
+        res.status(500).json({error:"internal server error"})
+    
+       }
+}
