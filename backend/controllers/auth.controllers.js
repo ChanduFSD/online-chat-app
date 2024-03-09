@@ -5,13 +5,13 @@ import genarateTokenAndSetCookies from "../utils/genarateTokens.js";
 
 export const signup = async (req,res) =>{
     try{
-     const {fullName,username,password,confirmpassword,gender}= req.body;//getting the required data from the inputs for signup
+     const {fullName,username,password,confirmPassword,gender}= req.body;//getting the required data from the inputs for signup
 
 
      //***signup a user*** 
 
       //checking wether the entred password is same as confirm password orelse respond a error saying that passrod do not match
-      if(password !== confirmpassword){
+      if(password !== confirmPassword){
         return res.status(400).json({error:"Password do not match"})
       }
 
