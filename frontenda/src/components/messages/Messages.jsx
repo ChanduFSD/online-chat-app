@@ -14,9 +14,9 @@ const Messages = () => {
 			lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
 		}, 100);
 	}, [messages]);
+
 	return (
 		<div className='px-4 flex-1 overflow-auto'>
-			<Message />
 			{!loading &&
 				messages.length > 0 &&
 				messages.map((message) => (
@@ -34,3 +34,25 @@ const Messages = () => {
 };
 export default Messages;
 
+// STARTER CODE SNIPPET
+// import Message from "./Message";
+
+// const Messages = () => {
+// 	return (
+// 		<div className='px-4 flex-1 overflow-auto'>
+// 			<Message />
+// 			<Message />
+// 			<Message />
+// 			<Message />
+// 			<Message />
+// 			<Message />
+// 			<Message />
+// 			<Message />
+// 			<Message />
+// 			<Message />
+// 			<Message />
+// 			<Message />
+// 		</div>
+// 	);
+// };
+// export default Messages;

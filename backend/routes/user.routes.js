@@ -1,7 +1,7 @@
 import express from "express";
 
 import protectRoute from "../middelware/protectRoute.js";
-import { getUsersForSidebar } from "../controllers/user.controllers.js";
+import { getUsersForSidebar } from "../controllers/user.controller.js";
 
 const router = express.Router();
 
